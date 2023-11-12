@@ -4,17 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Edit Contact">
-    <!--<VerticalStackLayout>
-        <Label
-            x:Name="lblName"
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
-        <Button
-            x:Name="btnCancel"
-            Clicked="btnCancel_Clicked"
-            Text="Cancel" />
-    </VerticalStackLayout>-->
+
     <VerticalStackLayout Margin="20,20,20,10" Spacing="10">
         <Frame Padding="10,10,10,10">
             <HorizontalStackLayout>
@@ -22,7 +12,7 @@
                     Text="Name"
                     VerticalOptions="Center"
                     WidthRequest="70" />
-                <Entry />
+                <Entry x:Name="entryName" />
             </HorizontalStackLayout>
         </Frame>
 
@@ -32,7 +22,7 @@
                     Text="Email"
                     VerticalOptions="Center"
                     WidthRequest="70" />
-                <Entry />
+                <Entry x:Name="entryEmail" />
             </HorizontalStackLayout>
         </Frame>
 
@@ -42,7 +32,7 @@
                     Text="Phone"
                     VerticalOptions="Center"
                     WidthRequest="70" />
-                <Entry />
+                <Entry x:Name="entryPhone" />
             </HorizontalStackLayout>
         </Frame>
 
@@ -53,9 +43,17 @@
                     Text="Addres"
                     VerticalOptions="Center"
                     WidthRequest="70" />
-                <Entry />
+                <Entry x:Name="entryAddres" />
             </HorizontalStackLayout>
         </Frame>
+        <Button
+            x:Name="btnUpdate"
+            Clicked="btnUpdate_Clicked"
+            Text="Update" />
+        <Button
+            x:Name="btnCancel"
+            Clicked="btnCancel_Clicked"
+            Text="Cancel" />
 
     </VerticalStackLayout>
 

@@ -15,16 +15,32 @@ public partial class EditContactPage : ContentPage
 		InitializeComponent();
 	}
 
-  /*  private void btnCancel_Clicked(object sender, EventArgs e)
+    private void btnCancel_Clicked(object sender, EventArgs e)
     {
-		Shell.Current.GoToAsync(".."); // .. znaczy parent
-    }*/
+        Shell.Current.GoToAsync(".."); // .. znaczy parent
+    }
     public string ContactId
     {
         set
 		{
             contact = ContactRepository.GetContactById(int.Parse(value));
-		//	lblName.Text = contact.Name;
+			if (contact != null) {
+                entryName.Text = contact.Name;
+                entryEmail.Text = contact.Email;
+                entryPhone.Text = contact.Phone;
+                entryAddres.Text = contact.Address;
+            }
 		}
 	}
+
+    private void btnUpdate_Clicked(object sender, EventArgs e)
+    {
+        contact.Name = entryName.Text;
+        contact.Email = entryEmail.Text;
+        contact.Phone = entryPhone.Text;
+        contact.Address = entryAddres.Text;
+
+        ContactRepository.UpdateContact(contact.ContactId, contact);
+        Shell.Current.GoToAsync(".."); // .. znaczy parent
+    }
 }

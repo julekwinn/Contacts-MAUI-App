@@ -32,5 +32,25 @@ namespace Contacts.Maui.Models
             return _contacts.FirstOrDefault(x => x.ContactId == Contactid);
         }
 
+        public static void UpdateContact(int contactId, Contact contact)
+        {
+            if (contactId != contact.ContactId)
+            {
+                return;
+            }
+
+            var contactToUpdate = GetContactById(contactId);
+
+            if (contactToUpdate != null)
+            {
+                // Mozna uzyc automapper
+
+                contactToUpdate.Address = contact.Address;
+                contactToUpdate.Email = contact.Email;
+                contactToUpdate.Phone = contact.Phone;
+                contactToUpdate.Name = contact.Name;
+            }
+
+        }
     }
 }
