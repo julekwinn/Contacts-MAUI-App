@@ -36,5 +36,18 @@ public partial class ContactsPage : ContentPage
 
     }
 
+    private async void ListContacts_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+       // Logic
+        if (ListContacts.SelectedItem != null)
+        {
+            await Shell.Current.GoToAsync(nameof(EditContactPage));
+        }
 
+    }
+
+    private void ListContacts_ItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        ListContacts.SelectedItem = null;
+    }
 }
