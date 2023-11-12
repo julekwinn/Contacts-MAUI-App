@@ -1,5 +1,6 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using Contacts.Maui.Models;
+using Contact = Contacts.Maui.Models.Contact;
+
 
 namespace Contacts.Maui.Views;
 
@@ -9,39 +10,20 @@ public partial class ContactsPage : ContentPage
 	{
 		InitializeComponent();
 
-		List<Contact> contacts= new List<Contact>()
-		{
-			new Contact() {Name="Piotr Kowalski", Email="Piotrk124@wp.pl"},
-
-            new Contact() {Name="Jan Nowaczek", Email="Nowczkiewicz@wp.pl"},
-
-            new Contact() {Name="Justyna Kowalczyk", Email="Justynka_13@wp.pl"},
-
-            new Contact() {Name="Mariusz Pudzianowski", Email="Mariusz_pudzian@gmail.com"},
-
-            new Contact() {Name="Edyta Górniak", Email="edytkadytka@wp.pl"},
-        };
+        List<Contact> contacts = ContactRepository.GetContacts();
 
 		ListContacts.ItemsSource=contacts;
 
         BindingContext = this;
     }
 
-    public class Contact
-    {
-        public string Name { get; set; }
-
-        public string Email { get; set; }
-
-
-    }
-
     private async void ListContacts_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-       // Logic
+      
         if (ListContacts.SelectedItem != null)
         {
-            await Shell.Current.GoToAsync(nameof(EditContactPage));
+            // Logic
+            await Shell.Current.GoToAsync($"{nameof(EditContactPage)}?Id={((Contact)ListContacts.SelectedItem).ContactId}");
         }
 
     }
