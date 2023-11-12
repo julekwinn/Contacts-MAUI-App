@@ -5,19 +5,57 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Contacts">
 
+    <Grid
+        Padding="5"
+        ColumnDefinitions="*"
+        RowDefinitions="*,50">
 
-    <ListView
+        <ListView
+            x:Name="ListContacts"
+            Grid.Row="0"
+            Grid.Column="0"
+            ItemSelected="ListContacts_ItemSelected"
+            ItemTapped="ListContacts_ItemTapped"
+            RowHeight="65">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Email}" Text="{Binding Name}">
+                        <TextCell.ContextActions>
+                            <MenuItem
+                                Clicked="Delete_Clicked"
+                                CommandParameter="{Binding .}"
+                                IsDestructive="True"
+                                Text="Delete" />
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button
+            x:Name="btnAdd"
+            Grid.Row="1"
+            Grid.Column="0"
+            Clicked="btnAdd_Clicked"
+            Scale="0.9"
+            Text="Add Contact" />
+
+
+    </Grid>
+
+
+
+    <!--<ListView
         x:Name="ListContacts"
         ItemSelected="ListContacts_ItemSelected"
         ItemTapped="ListContacts_ItemTapped"
-        RowHeight="65"
-        SeparatorColor="Aqua">
+        RowHeight="65">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Detail="{Binding Email}" Text="{Binding Name}" />
             </DataTemplate>
         </ListView.ItemTemplate>
-    </ListView>
+    </ListView>-->
 
 
 
