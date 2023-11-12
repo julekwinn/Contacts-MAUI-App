@@ -8,6 +8,9 @@ Contacts.Maui is a cross-platform mobile application built with .NET MAUI. Its m
 - Adding new contacts
 - Editing existing contacts
 - Deleting contacts
+  
+![Mai1](https://github.com/julekwinn/Contacts-MAUI-App/assets/126665165/9f5ddc38-a6aa-411a-85a7-7eeb09b4c74e)
+
 
 ## 2. Technologies Used 🚀
 
