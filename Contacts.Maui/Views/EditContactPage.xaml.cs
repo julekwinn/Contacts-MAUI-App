@@ -15,16 +15,16 @@ public partial class EditContactPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void btnCancel_Clicked(object sender, EventArgs e)
+  /*  private void btnCancel_Clicked(object sender, EventArgs e)
     {
 		Shell.Current.GoToAsync(".."); // .. znaczy parent
-    }
+    }*/
     public string ContactId
     {
         set
 		{
             contact = ContactRepository.GetContactById(int.Parse(value));
-			lblName.Text = contact.Name;
+		//	lblName.Text = contact.Name;
 		}
 	}
 }
