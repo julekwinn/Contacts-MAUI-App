@@ -3,81 +3,14 @@
     x:Class="Contacts.Maui.Views.EditContactPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Contacts.Maui.Views.Controls"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="Edit Contact">
 
-    <VerticalStackLayout Margin="20,20,20,10" Spacing="10">
-        <Frame Padding="10,10,10,10">
-            <HorizontalStackLayout>
-                <Label
-                    Text="Name"
-                    VerticalOptions="Center"
-                    WidthRequest="70" />
-                <Entry x:Name="entryName">
-                    <Entry.Behaviors>
-                        <toolkit:TextValidationBehavior
-                            x:Name="nameValidator"
-                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                            MinimumLength="1" />
-                    </Entry.Behaviors>
-                </Entry>
-            </HorizontalStackLayout>
-        </Frame>
-
-        <Frame Padding="10,10,10,10">
-            <HorizontalStackLayout>
-                <Label
-                    Text="Email"
-                    VerticalOptions="Center"
-                    WidthRequest="70" />
-                <Entry x:Name="entryEmail">
-                    <Entry.Behaviors>
-                        <toolkit:MultiValidationBehavior x:Name="emailValidator" Flags="ValidateOnAttaching,ValidateOnValueChanged">
-                            <toolkit:TextValidationBehavior
-                                toolkit:MultiValidationBehavior.Error="Email is required"
-                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                MinimumLength="1" />
-                            <toolkit:EmailValidationBehavior toolkit:MultiValidationBehavior.Error="Wrong email format" Flags="ValidateOnAttaching,ValidateOnValueChanged" />
-                        </toolkit:MultiValidationBehavior>
-                    </Entry.Behaviors>
-                </Entry>
-
-            </HorizontalStackLayout>
-        </Frame>
-
-        <Frame Padding="10,10,10,10">
-            <HorizontalStackLayout>
-                <Label
-                    Text="Phone"
-                    VerticalOptions="Center"
-                    WidthRequest="70" />
-                <Entry x:Name="entryPhone" />
-            </HorizontalStackLayout>
-        </Frame>
-
-
-        <Frame Padding="10,10,10,10">
-            <HorizontalStackLayout>
-                <Label
-                    Text="Addres"
-                    VerticalOptions="Center"
-                    WidthRequest="70" />
-                <Entry x:Name="entryAddres" WidthRequest="230" />
-            </HorizontalStackLayout>
-        </Frame>
-        <Button
-            x:Name="btnUpdate"
-            Clicked="btnUpdate_Clicked"
-            Text="Update" />
-        <Button
-            x:Name="btnCancel"
-            Clicked="btnCancel_Clicked"
-            Text="Cancel" />
-
-    </VerticalStackLayout>
-
-
-
-
+    <controls:ContactControl
+        x:Name="contactCtrl"
+        OnCancel="btnCancel_Clicked"
+        OnError="contactCtrl_OnError"
+        OnSave="btnUpdate_Clicked" />
 
 </ContentPage>
